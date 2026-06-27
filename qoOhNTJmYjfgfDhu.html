@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Republic of Spinjitsu - Official Site</title>
+    <style>
+        :root {
+            --gold: #ffd700;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --red: #ff4500;
+            --blue: #1e90ff;
+            --green: #32cd32;
+            --ice: #add8e6;
+            --brown: #8b4513;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1599408162165-401246ed5d4e?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .motto {
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--gold);
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 0.5rem 2rem;
+            margin-top: 1rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        h3 {
+            color: var(--gold);
+            margin: 2rem 0 1rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--dark-gray);
+            padding: 2rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .title-gold {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* Map Section */
+        .map-container {
+            background: var(--dark-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .map-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* List Items */
+        .list-item {
+            background: #111;
+            margin-bottom: 0.5rem;
+            padding: 1rem;
+            border-left: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        /* Alphabet Grid */
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .letter-card {
+            background: var(--dark-gray);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+
+        .spin-letter {
+            font-size: 2rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--gold);
+        }
+
+        .scroll-top {
+            color: var(--gold);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            nav ul { gap: 1rem; }
+            nav a { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a onclick="scrollToSection('home')">Home</a></li>
+            <li><a onclick="scrollToSection('maps')">Maps</a></li>
+            <li><a onclick="scrollToSection('government')">Government</a></li>
+            <li><a onclick="scrollToSection('military')">Military</a></li>
+            <li><a onclick="scrollToSection('laws')">Laws</a></li>
+            <li><a onclick="scrollToSection('alphabet')">Alphabet</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Header -->
+    <header id="home">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663795915180/YNggSJucCBDQhzQJ.png" alt="Dragon Flag" style="max-width: 300px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663795915180/mpmSfbejpphwIPsc.jpeg" alt="Coat of Arms" style="max-width: 250px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));">
+        </div>
+        <h1>The Republic of Spinjitsu</h1>
+        <p class="motto">Jump Up, Kick Back, Whip Around and Spin</p>
+    </header>
+
+    <!-- Maps Section -->
+    <section id="maps">
+        <h2>🗺️ National Maps</h2>
+        
+        <div class="map-container">
+            <h3>📍 Political Map</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Provincial Borders, Cities, and Territories</p>
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663795915180/yfjKftoEbaQWAdep.png" alt="Political Map of Spinjitsu" class="map-image">
+        </div>
+
+        <div class="map-container">
+            <h3>🌍 Geographic Map</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Natural Terrain and Land Layout</p>
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663795915180/WOkCIxKORqvZrvTA.png" alt="Geographic Map of Spinjitsu" class="map-image">
+        </div>
+    </section>
+
+    <!-- Chart Image Section -->
+    <section id="chart" style="background: #0f0f0f;">
+        <h2>📊 Official Government Structure</h2>
+        <div class="map-container">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663795915180/WvYCXaiAyDcMhfTO.png" alt="Spinjitsu Government Chart" class="map-image">
+            <div class="image-caption">Official Administrative & Military Hierarchy</div>
+        </div>
+    </section>
+
+    <!-- Detailed Government -->
+    <section id="government">
+        <h2>🏛️ National Government</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-weight: bold; color: var(--gold);">UNITY • HONOR • DISCIPLINE • BALANCE • POWER</p>
+        
+        <div class="grid-4">
+            <div class="card" style="border-color: var(--gold);">
+                <div class="icon-large">👑</div>
+                <div class="title-gold">1. KING</div>
+                <p style="font-size: 0.8rem; color: #aaa;">Supreme Monarch • Highest Ruler of Spinjitsu • Holder of Absolute Power</p>
+            </div>
+            <div class="card" style="border-color: var(--gold);">
+                <div class="icon-large">👸</div>
+                <div class="title-gold">2. QUEEN</div>
+                <p style="font-size: 0.8rem; color: #aaa;">Royal Consort • Royal Partner & Advisor • Guardian of the Royal Household</p>
+            </div>
+            <div class="card">
+                <div class="icon-large">🏛️</div>
+                <div class="title-gold">3. PRESIDENT</div>
+                <p style="font-size: 0.8rem; color: #aaa;">Head of State • Leads the Government • Represents the Nation</p>
+            </div>
+            <div class="card">
+                <div class="icon-large">📜</div>
+                <div class="title-gold">VICE PRESIDENT</div>
+                <p style="font-size: 0.8rem; color: #aaa;">Deputy to the President • Assists in National Leadership • Ensures Government Continuity</p>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <div class="title-gold">PRIME MINISTER</div>
+                <p style="font-size: 0.8rem;">Head of Civil Government • Oversees National Administration • Directs Policy Implementation</p>
+            </div>
+            <div class="card">
+                <div class="title-gold">MINISTERS</div>
+                <p style="font-size: 0.8rem;">Leads all Ministry Departments • Create Policies & Manage Affairs</p>
+            </div>
+            <div class="card">
+                <div class="title-gold">GOVERNORS</div>
+                <p style="font-size: 0.8rem;">Oversee Provinces & Regions • Enforce National Laws</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem;">The Ministries</h3>
+        <div class="grid-4">
+            <div class="card"><div class="title-gold">🛡️ Defense</div><p style="font-size: 0.7rem;">Protects the Nation • Trains Ninja Forces • Maintains Security</p></div>
+            <div class="card"><div class="title-gold">🎓 Education</div><p style="font-size: 0.7rem;">Develops Citizens • Supports Academies & Learning</p></div>
+            <div class="card"><div class="title-gold">💰 Finance</div><p style="font-size: 0.7rem;">Manages Economy • Treasury, Taxes & Trade</p></div>
+            <div class="card"><div class="title-gold">🔬 Technology</div><p style="font-size: 0.7rem;">Advances Innovation • Engineering & Research</p></div>
+            <div class="card"><div class="title-gold">⚡ Energy</div><p style="font-size: 0.7rem;">Manages Power Resources & Sustainable Energy</p></div>
+            <div class="card"><div class="title-gold">🌐 Foreign Affairs</div><p style="font-size: 0.7rem;">Handles Diplomacy • Alliances & Relations with Nations</p></div>
+            <div class="card"><div class="title-gold">⚖️ Justice</div><p style="font-size: 0.7rem;">Upholds the Law • Ensures Justice & Fairness</p></div>
+            <div class="card"><div class="title-gold">➕ Health</div><p style="font-size: 0.7rem;">Public Health • Hospitals & Wellness</p></div>
+        </div>
+    </section>
+
+    <!-- Military Section -->
+    <section id="military" style="background: #0f0f0f;">
+        <h2>⚔️ Military & Order</h2>
+        
+        <div class="grid-3">
+            <div class="card">
+                <h3>4. Spinjitsu Order</h3>
+                <div class="list-item">✨ Grandmaster (Supreme Master)</div>
+                <div class="list-item">✨ High Elemental Masters</div>
+                <div class="list-item">✨ Elemental Masters</div>
+                <div class="list-item">✨ Master Senseis</div>
+                <div class="list-item">✨ Senior Students</div>
+                <div class="list-item">✨ Students</div>
+            </div>
+            <div class="card">
+                <h3>5. Ninja Corps</h3>
+                <div class="list-item">🥷 General (Commands All Forces)</div>
+                <div class="list-item">🥷 Colonel (Leads Elite Legions)</div>
+                <div class="list-item">🥷 Commander (Commands Battalions)</div>
+                <div class="list-item">🥷 Captain (Leads Companies)</div>
+                <div class="list-item">🥷 Lieutenant (Leads Squads)</div>
+                <div class="list-item">🥷 Sergeant (Leads Units)</div>
+            </div>
+            <div class="card">
+                <h3>6. Shinobi Ranks</h3>
+                <div class="list-item">🔥 Ultimate Shinobi (Legendary Master)</div>
+                <div class="list-item">🔥 Jonin (Elite Ninja)</div>
+                <div class="list-item">🔥 Chunin (Expert Ninja)</div>
+                <div class="list-item">🔥 Genin (Junior Ninja)</div>
+                <div class="list-item">🔥 Academy Student</div>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>7. Ninja Weapons</h3>
+                <p style="font-size: 0.8rem;">Katana • Wakizashi • Kunai • Shuriken • Kusarigama • Tanto • Bo Staff • Senbon • Smoke Bomb</p>
+            </div>
+            <div class="card">
+                <h3>8. Mechanized Dragon Corps</h3>
+                <div class="list-item">🐉 Soldier (Ninja Mech Operative)</div>
+                <div class="list-item">🐉 Elite Ninja (Advanced Mech Pilot)</div>
+                <div class="list-item">🐉 Samurai Warrior (Armored Ninja)</div>
+                <div class="list-item">🐉 Samurai Commander</div>
+                <div class="list-item">🐉 Dragon Mech / Dragon Titan</div>
+            </div>
+            <div class="card">
+                <h3>10. Our Principles</h3>
+                <p style="font-size: 0.8rem; text-align: left;">
+                    ⭐ ORDER - Unwavering law and stability.<br>
+                    ⭐ PROGRESS - Innovation and hard work.<br>
+                    ⭐ UNITY - One people, one nation, one Spinjitsu.<br>
+                    ⭐ EXCELLENCE - Highest standards in all we do.<br>
+                    ⭐ DISCIPLINE - We master ourselves before we lead.<br>
+                    ⭐ HONOR - We respect our nation, people, and code.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laws Section -->
+    <section id="laws">
+        <h2>⚖️ The 16 Laws of the Republic</h2>
+        <div class="grid-3">
+            <div class="list-item">1. Right to learn Spinjitsu.</div>
+            <div class="list-item">2. No use for evil gain.</div>
+            <div class="list-item">3. Respect Elemental Masters.</div>
+            <div class="list-item">4. Duty to protect borders.</div>
+            <div class="list-item">5. Honor family and clan.</div>
+            <div class="list-item">6. Protect Golden Weapons.</div>
+            <div class="list-item">7. Contribute to harmony.</div>
+            <div class="list-item">8. King's word is final.</div>
+            <div class="list-item">9. Training is a privilege.</div>
+            <div class="list-item">10. Unity under Dragon Flag.</div>
+            <div class="list-item">11. No artifact theft.</div>
+            <div class="list-item">12. Provincial representation.</div>
+            <div class="list-item">13. Restricted Airjitzu.</div>
+            <div class="list-item">14. Loyalty to Republic.</div>
+            <div class="list-item">15. Teach First Master's history.</div>
+            <div class="list-item">16. Balance is the goal.</div>
+        </div>
+    </section>
+
+    <!-- Alphabet Section -->
+    <section id="alphabet" style="background: #0f0f0f;">
+        <h2>🔤 The Spinjitsuian Alphabet</h2>
+        <div class="alphabet-grid">
+            <div class="letter-card"><span class="spin-letter">A</span><span>Ah</span></div>
+            <div class="letter-card"><span class="spin-letter">B</span><span>Be</span></div>
+            <div class="letter-card"><span class="spin-letter">C</span><span>Ce</span></div>
+            <div class="letter-card"><span class="spin-letter">D</span><span>De</span></div>
+            <div class="letter-card"><span class="spin-letter">E</span><span>Eh</span></div>
+            <div class="letter-card"><span class="spin-letter">F</span><span>Fe</span></div>
+            <div class="letter-card"><span class="spin-letter">G</span><span>Ge</span></div>
+            <div class="letter-card"><span class="spin-letter">H</span><span>He</span></div>
+            <div class="letter-card"><span class="spin-letter">I</span><span>Ih</span></div>
+            <div class="letter-card"><span class="spin-letter">J</span><span>Je</span></div>
+            <div class="letter-card"><span class="spin-letter">K</span><span>Ke</span></div>
+            <div class="letter-card"><span class="spin-letter">L</span><span>Le</span></div>
+            <div class="letter-card"><span class="spin-letter">M</span><span>Me</span></div>
+            <div class="letter-card"><span class="spin-letter">N</span><span>Ne</span></div>
+            <div class="letter-card"><span class="spin-letter">O</span><span>Oh</span></div>
+            <div class="letter-card"><span class="spin-letter">P</span><span>Pe</span></div>
+            <div class="letter-card"><span class="spin-letter">Q</span><span>Que</span></div>
+            <div class="letter-card"><span class="spin-letter">R</span><span>Re</span></div>
+            <div class="letter-card"><span class="spin-letter">S</span><span>Se</span></div>
+            <div class="letter-card"><span class="spin-letter">T</span><span>Te</span></div>
+            <div class="letter-card"><span class="spin-letter">U</span><span>Uh</span></div>
+            <div class="letter-card"><span class="spin-letter">V</span><span>Ve</span></div>
+            <div class="letter-card"><span class="spin-letter">W</span><span>We</span></div>
+            <div class="letter-card"><span class="spin-letter">X</span><span>Xe</span></div>
+            <div class="letter-card"><span class="spin-letter">Y</span><span>Ye</span></div>
+            <div class="letter-card"><span class="spin-letter">Z</span><span>Ze</span></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 The Republic of Spinjitsu. All Rights Reserved.</p>
+        <p style="margin-top: 1rem;"><span class="scroll-top" onclick="scrollToSection('home')">Back to Top</span></p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const offset = 80;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
